@@ -1,0 +1,14 @@
+class Solution:
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        mapping = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
+        val = 0
+        for index, item in enumerate(s):
+            if(index+1 >= len(s) or mapping[s[index+1]] <= mapping[item]):  #最后一位，或者当前字符比右边的字符大，相加
+                val += mapping[item]
+            else:
+                val -= mapping[item] #其余情况，相减
+        return val
