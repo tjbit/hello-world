@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if len(s) % 2 != 0:
+            return False
+        pair = {'(':')', '[':']', '{':'}'}
+        string = []
+        for val in s:
+            if val == '(' or val == '[' or val == '{':
+                string.append(val)
+            elif len(string) > 0 and val == pair[string[-1]]:
+                string.pop()
+            else:
+                return False
+        if len(string) > 0:
+            return False
+        else:
+            return True
