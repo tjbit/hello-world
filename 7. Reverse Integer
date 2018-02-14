@@ -1,0 +1,29 @@
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        l = []
+        sign = 1
+        if x <=9 and x >= -9:
+            return x
+        if x < -9:
+            sign = -1
+            x = x*sign
+        while(x >= 10):
+            l.append(x%10)
+            x = x//10
+        l.append(x)
+        for i in range(len(l)):
+            l[i] = str(l[i])
+        while l[0] == '0':
+            del l[0]
+        lstr = ''
+        for i in l:
+            lstr += i
+        lint = int(lstr)*sign
+        if lint > 2147483647 or lint < -2147483648:
+            return 0
+        else:
+            return lint
