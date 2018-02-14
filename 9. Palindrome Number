@@ -1,0 +1,18 @@
+class Solution:
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        bit = 1
+        while(x / bit >= 10):
+            bit *= 10
+        while(x != 0)  :
+    #            最高位 != 最低位  
+            if (x // bit != x % 10):
+                return False
+    #                 最高位 = 最低位 去掉最高位 去掉最低位  
+    #                继续比较  
+            x = (x % bit) // 10
+            bit /= 100
+        return True
